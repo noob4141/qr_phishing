@@ -9,7 +9,11 @@ app = Flask(__name__)
 app.secret_key = secrets.token_hex(16)
 
 # ------------------ Database Config ------------------
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:root121@localhost/qr_signup_db'
+# Railway MySQL connection string
+app.config['SQLALCHEMY_DATABASE_URI'] = (
+    "mysql+pymysql://root:EjSkQfSktfpGcdwLCSLwCiJOZHpibTTD"
+    "@yamanote.proxy.rlwy.net:32922/railway"
+)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.init_app(app)
 
@@ -54,12 +58,11 @@ def submit():
         return redirect(url_for("register_form"))
 
     # -------- Save new user --------
-
     user = User(
         first_name=first_name,
         last_name=last_name,
         email=email,
-        Password=password  
+        Password=password   # ⚠️ ideally hash this with generate_password_hash
     )
 
     db.session.add(user)
