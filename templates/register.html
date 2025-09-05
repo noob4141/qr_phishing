@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en" class="dark-theme">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Account</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/test.css') }}">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-[var(--form-button-text-color)] min-h-screen flex flex-col font-[var(--font-family)]">
+
+  <!-- Top Header Strip -->
+  <header class="w-full bg-[var(--widget-body)] px-6 py-3 flex items-center justify-between shadow-md border-b border-[var(--border)]">
+    <!-- EY Logo -->
+    <div class="flex items-center">
+      <img src="https://tse2.mm.bing.net/th/id/OIP.bBRnKwFv2qeCJ2l8C2exOgHaE8?w=236&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7"
+           alt="EY Logo"
+           class="h-10 mr-3 rounded">
+      <h1 class="text-lg font-bold text-[var(--yellow-text)]">EY Registration</h1>
+    </div>
+
+    <!-- Power Icon on the Right -->
+    <button class="text-[var(--yellow-text)] hover:opacity-80">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+           stroke="currentColor" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 3v9m6.364-5.364A9 9 0 116.636 6.636 9 9 0 0118.364 6.636z"/>
+      </svg>
+    </button>
+  </header>
+
+  <!-- Center Form Container -->
+  <main class="flex-grow flex items-center justify-center">
+    <div class="bg-[var(--widget-body)] bg-opacity-80 p-8 rounded-xl shadow-xl w-[400px] border border-[var(--border)]">
+      
+      <!-- Heading -->
+      <h1 class="text-2xl font-bold mb-6 text-center text-[var(--yellow-text)]">
+        Create Account
+      </h1>
+
+      <!-- Flash Messages -->
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          <div class="mb-4">
+            {% for category, msg in messages %}
+              <p class="text-red-500 font-medium">{{ msg }}</p>
+            {% endfor %}
+          </div>
+        {% endif %}
+      {% endwith %}
+
+      <!-- Register Form -->
+      <form method="POST" action="{{ url_for('submit') }}" class="space-y-4">
+        
+        <!-- Email (Readonly) -->
+        <input type="email" 
+               name="email" 
+               placeholder="Email" 
+               required 
+               value="{{ email }}" 
+               readonly
+               class="w-full px-4 py-2 border rounded bg-gray-200 text-gray-700 cursor-not-allowed">
+
+        <!-- First Name -->
+        <input type="text" 
+               name="first_name"   
+               placeholder="First Name" 
+               value="{{ firstname }}" 
+               required 
+               class="w-full px-4 py-2 border rounded bg-white text-gray-700">
+
+        <!-- Last Name -->
+        <input type="text" 
+               name="last_name"   
+               placeholder="Last Name" 
+               value="{{ lastname }}" 
+               required 
+               class="w-full px-4 py-2 border rounded bg-white text-gray-700">
+
+        <!-- Password Input -->
+        <input type="password" 
+               name="password" 
+               placeholder="Enter Password" 
+               required 
+               class="w-full px-4 py-2 border rounded focus:ring-2 focus:ring-[var(--blue)]">
+        
+        <!-- Submit Button -->
+        <button type="submit" 
+                class="w-full py-3 rounded-lg font-semibold
+                       bg-[var(--button-color)] text-[var(--button-text)]
+                       hover:opacity-90 transition">
+          Register
+        </button>
+      </form>
+    </div>
+  </main>
+</body>
+</html>

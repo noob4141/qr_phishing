@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en" class="dark-theme">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reset Successful</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/test.css') }}">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-[var(--form-button-text-color)] min-h-screen flex flex-col font-[var(--font-family)]">
+  
+  <!-- Top Header Strip -->
+  <header class="w-full bg-[var(--widget-body)] px-6 py-3 flex items-center justify-between shadow-md border-b border-[var(--border)]">
+    <!-- EY Logo -->
+    <div class="flex items-center">
+      <img src="https://tse2.mm.bing.net/th/id/OIP.bBRnKwFv2qeCJ2l8C2exOgHaE8?w=236&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7"
+           alt="EY Logo"
+           class="h-10 mr-3 rounded">
+      <h1 class="text-lg font-bold text-[var(--yellow-text)]">EY Registration</h1>
+    </div>
+
+    <!-- Power Icon on the Right -->
+    <button class="text-[var(--yellow-text)] hover:opacity-80">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+           stroke="currentColor" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 3v9m6.364-5.364A9 9 0 116.636 6.636 9 9 0 0118.364 6.636z"/>
+      </svg>
+    </button>
+  </header>
+
+  <!-- Centered Inner Container -->
+  <main class="flex-grow flex items-center justify-center">
+    <div class="bg-[var(--widget-body)] bg-opacity-90 p-8 rounded-xl shadow-xl w-[400px] text-center border border-[var(--border)]">
+
+      <!-- Heading -->
+      <h1 class="text-xl font-bold mb-4 text-[var(--low)]">
+        Registration Successful 😭😰
+      </h1>
+
+      <!-- Message -->
+      <p class="text-[var(--text-color)] text-md mb-6">
+        Welcome, <span class="font-semibold text-[var(--ey-yellow)]">{{ email }}</span>!
+      </p>
+
+      <!-- Back Button -->
+      <a href="{{ url_for('home') }}" class="block w-full">
+        <button class="w-full py-3 rounded-lg font-semibold
+                       bg-[var(--button-color)] text-[var(--button-text)] 
+                       hover:opacity-90 transition">
+           Home
+        </button>
+      </a>
+
+    </div>
+  </main>
+</body>
+</html>
